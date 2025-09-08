@@ -18,9 +18,8 @@ RUN apt-get update \
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 COPY --chown=www-data:www-data . .
-
-# Sobrescribe el config por el tuyo personalizado
-COPY --chown=www-data:www-data config/config.inc.php config/config.inc.php
+# Sobrescribe el config con el tuyo
+COPY --chown=www-data:www-data config/config.inc.php /var/www/html/config/config.inc.php
 
 # This is configuring the stuff for the API
 RUN cd /var/www/html/vulnerabilities/api \
